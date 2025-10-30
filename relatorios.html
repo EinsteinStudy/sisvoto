@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatórios de Votação</title>
+    <style>
+        /* Estilo global */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        h1 {
+            color: #4CAF50;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    
+        /* Tabela de relatórios */
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+    
+        th, td {
+            text-align: center;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+    
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+            font-weight: bold;
+        }
+    
+        td {
+            font-size: 14px;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    
+        /* Botão de voltar */
+        a {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+    
+        a:hover {
+            background-color: #45a049;
+        }
+    
+        /* Responsividade */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+                font-size: 12px;
+            }
+    
+            h1 {
+                font-size: 1.5em;
+            }
+    
+            a {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Relatório da Quantidade de Votos</h1>
+
+    <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>Opção de Voto</th>
+            <th>Total de Votos</th>
+        </tr>
+        {% for row in resultados %}
+        <tr>
+            <td>{{ row['voto'] }}</td>
+            <td>{{ row['total'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('index') }}">Voltar para a página inicial</a>
+</body>
+</html>

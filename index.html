@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Votação</title>
+    <script>
+        function solicitarSenha() {
+            const senhaCorreta = "s3nh4s3cr3t4";
+            const senha = prompt("Por favor, insira a senha para acessar os relatórios:");
+            if (senha === senhaCorreta) {
+                window.location.href = "{{ url_for('relatorios') }}"; // Redireciona para os relatórios
+            } else {
+                alert("Senha incorreta! Você não tem permissão para acessar.");
+            }
+        }
+    </script>
+    <style>
+      /* Estilo global */
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f5f5f5;
+          color: #333;
+          margin: 0;
+          padding: 20px;
+          line-height: 1.6;
+      }
+  
+      h1, h2 {
+          text-align: center;
+          margin-bottom: 20px;
+          color: #4CAF50;
+      }
+  
+      h1 {
+          font-size: 2.5em;
+      }
+  
+      h2 {
+          font-size: 1.8em;
+      }
+  
+      /* Lista de turmas */
+      ul {
+          list-style: none;
+          padding: 0;
+          max-width: 600px;
+          margin: 0 auto 20px auto;
+      }
+  
+      ul li {
+          background: #ffffff;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          margin-bottom: 10px;
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      }
+  
+      ul li a {
+          display: block;
+          padding: 10px 20px;
+          text-decoration: none;
+          color: #333;
+          font-weight: bold;
+          border-radius: 5px;
+          transition: background-color 0.3s, color 0.3s;
+      }
+  
+      ul li a:hover {
+          background-color: #4CAF50;
+          color: #ffffff;
+      }
+  
+      /* Botão "Ver Relatórios" */
+      a[href*="relatorios"] {
+          display: inline-block;
+          background-color: #4CAF50;
+          color: #ffffff;
+          padding: 10px 20px;
+          text-decoration: none;
+          font-weight: bold;
+          border-radius: 5px;
+          margin: 20px auto;
+          text-align: center;
+          transition: background-color 0.3s ease;
+      }
+  
+      a[href*="relatorios"]:hover {
+          background-color: #45a049;
+      }
+  
+      /* Mensagens de feedback */
+      ul li {
+          font-size: 14px;
+      }
+  
+      ul li[style*="red"] {
+          color: red !important;
+      }
+  
+      ul li[style*="green"] {
+          color: green !important;
+      }
+  
+      /* Responsividade */
+      @media (max-width: 768px) {
+          body {
+              padding: 10px;
+          }
+  
+          ul li a {
+              font-size: 14px;
+              padding: 8px 16px;
+          }
+  
+          h1, h2 {
+              font-size: 1.6em;
+          }
+      }
+  </style>
+  
+</head>
+<body>
+    <h1>Bem-vindo ao Sistema de Votação!</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, msg in messages %}
+            <li style="color: {% if category == 'error' %}red{% elif category == 'success' %}green{% else %}black{% endif %};">
+              {{ msg }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <h2><i class="fa fa-arrow-left" aria-hidden="true"></i>Tarde</h2>
+    <ul>
+        <li><a href="{{ url_for('votar', turma='6TA') }}">Votar na turma 6TA</a></li>
+        <li><a href="{{ url_for('votar', turma='6TB') }}">Votar na turma 6TB</a></li>
+        <li><a href="{{ url_for('votar', turma='6TC') }}">Votar na turma 6TC</a></li>
+        <li><a href="{{ url_for('votar', turma='6TD') }}">Votar na turma 6TD</a></li>
+        <li><a href="{{ url_for('votar', turma='7TA') }}">Votar na turma 7TA</a></li>
+        <li><a href="{{ url_for('votar', turma='7TB') }}">Votar na turma 7TB</a></li>
+        <li><a href="{{ url_for('votar', turma='7TC') }}">Votar na turma 7TC</a></li>
+        <li><a href="{{ url_for('votar', turma='7TD') }}">Votar na turma 7TD</a></li>
+        <li><a href="{{ url_for('votar', turma='8TA') }}">Votar na turma 8TA</a></li>
+        <li><a href="{{ url_for('votar', turma='8TB') }}">Votar na turma 8TB</a></li>
+        <li><a href="{{ url_for('votar', turma='8TC') }}">Votar na turma 8TC</a></li>
+        <li><a href="{{ url_for('votar', turma='8TD') }}">Votar na turma 8TD</a></li>
+    </ul>
+    <h2>Manhã</h2>
+    <ul>
+        <li><a href="{{ url_for('votar', turma='9MA') }}">Votar na turma 9MA</a></li>
+        <li><a href="{{ url_for('votar', turma='9MB') }}">Votar na turma 9MB</a></li>
+        <li><a href="{{ url_for('votar', turma='9MC') }}">Votar na turma 9MC</a></li>
+        <li><a href="{{ url_for('votar', turma='9MD') }}">Votar na turma 9MD</a></li>
+        <li><a href="{{ url_for('votar', turma='1MA') }}">Votar na turma 1MA</a></li>
+        <li><a href="{{ url_for('votar', turma='1MB') }}">Votar na turma 1MB</a></li>
+        <li><a href="{{ url_for('votar', turma='1ADM') }}">Votar na turma 1ADM</a></li>
+        <li><a href="{{ url_for('votar', turma='2MA') }}">Votar na turma 2MA</a></li>
+        <li><a href="{{ url_for('votar', turma='2DS') }}">Votar na turma 2DS</a></li>
+        <li><a href="{{ url_for('votar', turma='3MA') }}">Votar na turma 3MA</a></li>
+        <li><a href="{{ url_for('votar', turma='3DS') }}">Votar na turma 3DS</a></li>
+    </ul>
+
+    <a href="{{ url_for('relatorios') }}" onclick="solicitarSenha()">Ver Relatórios</a>
+</body>
+</html>
